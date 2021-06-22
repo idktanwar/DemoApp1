@@ -14,6 +14,7 @@
 		98979E3726819B160081E886 /* DemoApp1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 98979E3526819B160081E886 /* DemoApp1.xcdatamodeld */; };
 		98979E3926819B170081E886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 98979E3826819B170081E886 /* Assets.xcassets */; };
 		98979E3C26819B170081E886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98979E3A26819B170081E886 /* LaunchScreen.storyboard */; };
+		98A1DC072681DC2B000C767C /* DaysTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1DC052681DC2B000C767C /* DaysTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		98979E3826819B170081E886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		98979E3B26819B170081E886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		98979E3D26819B170081E886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98A1DC052681DC2B000C767C /* DaysTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +68,17 @@
 				98979E3A26819B170081E886 /* LaunchScreen.storyboard */,
 				98979E3D26819B170081E886 /* Info.plist */,
 				98979E3526819B160081E886 /* DemoApp1.xcdatamodeld */,
+				98A1DC092681DC3D000C767C /* Cells */,
 			);
 			path = DemoApp1;
+			sourceTree = "<group>";
+		};
+		98A1DC092681DC3D000C767C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				98A1DC052681DC2B000C767C /* DaysTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98979E3726819B160081E886 /* DemoApp1.xcdatamodeld in Sources */,
+				98A1DC072681DC2B000C767C /* DaysTableViewCell.swift in Sources */,
 				98979E3126819B160081E886 /* ViewController.swift in Sources */,
 				98979E2D26819B160081E886 /* AppDelegate.swift in Sources */,
 				98979E2F26819B160081E886 /* SceneDelegate.swift in Sources */,
