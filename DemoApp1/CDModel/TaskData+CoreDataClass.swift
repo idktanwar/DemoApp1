@@ -63,6 +63,7 @@ public class TaskData: NSManagedObject {
         
         if let task = task {
             task.completed = true
+            context.delete(task)
         }
         
         do {
