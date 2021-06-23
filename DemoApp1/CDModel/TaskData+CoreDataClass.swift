@@ -56,5 +56,39 @@ public class TaskData: NSManagedObject {
         }
     }
     
+    //Remove the task
+    class func removeTheTask(task: TaskItem, context: NSManagedObjectContext) -> Bool {
+        
+        let task = self.fetchTaskWithName(date: task.date)
+        
+        if let task = task {
+            task.completed = true
+        }
+        
+        do {
+            try context.save()
+            return true
+            
+        } catch let error {
+            print("❌ Failed to remove movie: \(error.localizedDescription)")
+            return false
+        }
+    }
+    
+    class func fetchTaskWithName(date: Date) -> TaskData? {
+        let context = CoreDataManager.sharedInstance.persistentContainer.viewContext
+
+        let fetchRequest = TaskData.getFetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "date == %@", date as CVarArg)
+
+        do {
+            let task = try context.fetch(fetchRequest).first
+            return task
+
+        } catch let fetchErr {
+            print("❌ Failed to fetch:",fetchErr)
+            return nil
+        }
+    }
 }
 

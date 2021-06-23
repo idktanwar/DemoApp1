@@ -53,5 +53,18 @@ extension TaskDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         if editingStyle == .delete {
+             let taskItem = taskItems[indexPath.row]
+             if CoreDataManager.sharedInstance.removeTaskItem(with: taskItem) {
+                 taskItems.remove(at: indexPath.row)
+                 tableView.deleteRows(at: [indexPath], with: .fade)
+                 DispatchQueue.main.async {
+                     self.tblView.reloadData()
+                 }
+             }
+         }
+     }
 
 }

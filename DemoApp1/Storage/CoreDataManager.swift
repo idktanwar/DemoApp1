@@ -37,4 +37,10 @@ class CoreDataManager {
         return TaskData.addNewItem(task: taskItem, context: context)
     }
     
+    //Remove the task Item
+    func removeTaskItem(with task: TaskItem) -> Bool {
+        let context = persistentContainer.viewContext
+        return TaskData.removeTheTask(task: task, context: context)
+    }
+    
 }
