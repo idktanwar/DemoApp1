@@ -9,13 +9,18 @@ import UIKit
 
 class TaskDetailVC: UIViewController {
 
+    //MARK:- Property
     @IBOutlet weak var tblView: UITableView!
     var taskItems = [TaskItem]()
     
+    //MARK:- LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
+
+    //MARK:- Helper Method
 
     private func setupUI() {        
         tblView.delegate = self
@@ -27,6 +32,8 @@ class TaskDetailVC: UIViewController {
         
     }
 }
+
+//MARK:- Tableview Datasource & Delegate
 
 extension TaskDetailVC: UITableViewDelegate, UITableViewDataSource {
     

@@ -35,4 +35,8 @@ extension Date {
         let date1String = dateFormatter.string(from: self as Date)
         return date1String
     }
+    
+    func isBetween(date date1: Date, andDate date2: Date) -> Bool {
+        return date1.compare(self as Date).rawValue * self.compare(date2 as Date).rawValue >= 0
+    }
 }

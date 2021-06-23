@@ -9,19 +9,24 @@ import UIKit
 
 class ViewController: UIViewController, didSaveItemDelegate {
     
+    //MARK:- Property
     @IBOutlet weak var tblView: UITableView!
     var itemVM = TaskItemViewModel()
     
+    //MARK:- LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getData()
     }
     
+    //MARK:- Helper Methods
+
     func setupUI() {
-        
-//        navigationController?.navigationBar.barTintColor = UIColor.green
-//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
         
         self.title = "My Reminder"
@@ -45,6 +50,8 @@ class ViewController: UIViewController, didSaveItemDelegate {
         }
     }
     
+    //MARK:- Selectors
+
     @IBAction func addNewTask(_ sender: Any) {
         let vc = self.storyboard?.instantiateViewController(identifier: "AddItemVC") as! AddItemVC
         vc.delegate = self
@@ -60,6 +67,8 @@ class ViewController: UIViewController, didSaveItemDelegate {
         getData()
     }
 }
+
+//MARK:- Tableview Delegate and Datasource
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     

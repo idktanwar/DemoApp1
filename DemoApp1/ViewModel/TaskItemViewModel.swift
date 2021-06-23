@@ -39,11 +39,11 @@ class TaskItemViewModel {
                 let taskItem = TaskItem(title: title, description: desc, date: date, iscompleted: item.completed)
                 let tommDate = (Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
                 
-                if date.isBetween(date: now as Date, andDate: tommDate as Date) {
-                    self.tommTasks.append(taskItem)
-                }
-                else if date1String == currentDateString {
+                if date1String == currentDateString  {
                     self.todays.append(taskItem)
+                }
+                else if date.isBetween(date: now as Date, andDate: tommDate as Date) {
+                    self.tommTasks.append(taskItem)
                 }
                 else {
                     self.laterTask.append(taskItem)
@@ -62,10 +62,4 @@ class TaskItemViewModel {
         return data
     }
     
-}
-
-extension Date {
-    func isBetween(date date1: Date, andDate date2: Date) -> Bool {
-        return date1.compare(self as Date).rawValue * self.compare(date2 as Date).rawValue >= 0
-    }
 }

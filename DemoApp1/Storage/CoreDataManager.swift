@@ -30,7 +30,7 @@ class CoreDataManager {
         return container
     }()
     
-    //  MARK: - TASKData Methods
+    //Add New Task Item
     func addNewTaskItem(taskItem: TaskItem) -> Bool {
         let context = persistentContainer.viewContext
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump

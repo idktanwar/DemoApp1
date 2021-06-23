@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EventKit
 
 protocol didSaveItemDelegate: AnyObject{
     func itemSaved()
@@ -13,6 +14,7 @@ protocol didSaveItemDelegate: AnyObject{
 
 class AddItemVC: UIViewController {
 
+    //MARK:- Property
     @IBOutlet weak var txtTitle: UITextField!
     @IBOutlet weak var txtViewDesc: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -21,11 +23,15 @@ class AddItemVC: UIViewController {
     
     var date = Date()
     
+    //MARK:- LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
+    //MARK:- Heler Methods
+
     private func setupUI(){
         self.title = "Add New Task"
         
@@ -37,6 +43,7 @@ class AddItemVC: UIViewController {
         
     }
    
+    //MARK:- Selectors
     @IBAction func DateChanged(_ sender: UIDatePicker) {
         date = self.datePicker.date
     }
@@ -73,12 +80,41 @@ class AddItemVC: UIViewController {
                 let task = TaskItem(title: title, description: descText, date: date, iscompleted: false)
                 let isSaved = CoreDataManager.sharedInstance.addNewTaskItem(taskItem: task)
                 
+                //Add to calender
+                self.addEventToCalendar(title: title, description: descText, startDate: date, endDate: date.addingTimeInterval(2 * 60 * 60))
+                
                 if isSaved && self.delegate != nil {
                     self.delegate?.itemSaved()
                 }
             }
         }
         
+    }
+    
+    //MARK:- Calendere Event store
+    
+    func addEventToCalendar(title: String, description: String?, startDate: Date, endDate: Date, completion: ((_ success: Bool, _ error: NSError?) -> Void)? = nil) {
+        let eventStore = EKEventStore()
+
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = title
+                event.startDate = startDate
+                event.endDate = endDate
+                event.notes = description
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event, span: .thisEvent)
+                } catch let e as NSError {
+                    completion?(false, e)
+                    return
+                }
+                completion?(true, nil)
+            } else {
+                completion?(false, error as NSError?)
+            }
+        })
     }
     
 }
