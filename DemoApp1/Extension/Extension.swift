@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//MARK:- UIViewController
 extension UIViewController {
     
     public func openAlert(title: String,
@@ -27,6 +28,8 @@ extension UIViewController {
     
 }
 
+//MARK:- Date
+
 extension Date {
     func getDate() -> String {
         let dateFormatter = DateFormatter()
@@ -38,5 +41,17 @@ extension Date {
     
     func isBetween(date date1: Date, andDate date2: Date) -> Bool {
         return date1.compare(self as Date).rawValue * self.compare(date2 as Date).rawValue >= 0
+    }
+}
+
+//MARK:- UIColor
+
+extension UIColor {
+    static var random: UIColor {
+        return UIColor(red: .random(in: 0.4...1), green: .random(in: 0.4...1), blue: .random(in: 0.4...1), alpha: 1)
+    }
+    
+    static var randomFade: UIColor {
+        return UIColor(red: .random(in: 0.4...1), green: .random(in: 0.4...1), blue: .random(in: 0.4...1), alpha: 0.14)
     }
 }

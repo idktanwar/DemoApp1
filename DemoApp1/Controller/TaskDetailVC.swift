@@ -22,7 +22,8 @@ class TaskDetailVC: UIViewController {
 
     //MARK:- Helper Method
 
-    private func setupUI() {        
+    private func setupUI() {
+
         tblView.delegate = self
         tblView.dataSource = self
         

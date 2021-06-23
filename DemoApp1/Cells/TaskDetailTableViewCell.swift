@@ -17,6 +17,8 @@ class TaskDetailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        
+        self.backgroundColor = .randomFade
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

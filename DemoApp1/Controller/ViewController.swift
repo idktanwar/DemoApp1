@@ -104,15 +104,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0 {
             viewController.taskItems = itemVM.todays
-            viewController.title = "My Today Reminders"
+            viewController.title = "Today Reminders"
         }
         else if indexPath.row == 1 {
             viewController.taskItems = itemVM.tommTasks
-            viewController.title = "My Tomorrow Reminders"
+            viewController.title = "Tomorrow Reminders"
         }
         else {
             viewController.taskItems = itemVM.laterTask
-            viewController.title = "My Upcoming Reminders"
+            viewController.title = "Upcoming Reminders"
         }
         
         self.navigationController?.pushViewController(viewController, animated: true)
