@@ -26,3 +26,13 @@ extension UIViewController {
     }
     
 }
+
+extension Date {
+    func getDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .medium
+        let date1String = dateFormatter.string(from: self as Date)
+        return date1String
+    }
+}

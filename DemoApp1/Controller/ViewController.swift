@@ -54,9 +54,15 @@ class ViewController: UIViewController, didSaveItemDelegate {
         self.navigationController?.present(navVC, animated: true, completion:nil)
     }
     
+    //DidSaveDelegate
+    func itemSaved(){
+        print("Refresh the list")
+        getData()
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -83,9 +89,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return tableView.frame.height/3
     }
     
-    //DidSaveDelegate
-    func itemSaved(){
-        print("Refresh the list")
-        getData()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TaskDetailVC") as! TaskDetailVC
+        
+        if indexPath.row == 0 {
+            viewController.taskItems = itemVM.todays
+            viewController.title = "My Today Reminders"
+        }
+        else if indexPath.row == 1 {
+            viewController.taskItems = itemVM.tommTasks
+            viewController.title = "My Tomorrow Reminders"
+        }
+        else {
+            viewController.taskItems = itemVM.laterTask
+            viewController.title = "My Upcoming Reminders"
+        }
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+
 }
