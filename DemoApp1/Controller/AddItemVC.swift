@@ -51,8 +51,17 @@ class AddItemVC: UIViewController {
         if txtTitle.text?.isEmpty ?? true {
             openAlert(title: "Alert", message: "Please add atleast title to task item.", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
                 print("Okay pressed")
+                return
             }])
         }
+        
+        if Calendar.current.isDateInYesterday(date) {
+            openAlert(title: "Alert", message: "Please select future date", alertStyle: .alert, actionTitles: ["Okay"], actionStyles: [.default], actions: [{ _ in
+                print("Okay pressed")
+                return
+            }])
+        }
+        
         else {
             self.dismiss(animated: true) {
                 //save to DB

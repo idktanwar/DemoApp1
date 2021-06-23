@@ -15,6 +15,9 @@ class TaskItemViewModel {
     var laterTask = [TaskItem]()
 
     func fetchTaskData(completion: @escaping () -> ()) {
+        todays.removeAll()
+        tommTasks.removeAll()
+        laterTask.removeAll()
         
         let taskData = TaskData.fetchTaskItemsLists()
         
